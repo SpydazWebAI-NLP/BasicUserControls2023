@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Basic_UserControls2023", "Basic_UserControls2023.vbproj", "{9BA90511-DD5E-4E4D-BA2B-E7557D339275}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1FB0EB4B-40C1-4820-BB72-2ED682A166C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BA90511-DD5E-4E4D-BA2B-E7557D339275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA90511-DD5E-4E4D-BA2B-E7557D339275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA90511-DD5E-4E4D-BA2B-E7557D339275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA90511-DD5E-4E4D-BA2B-E7557D339275}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D7D15D3-D52E-4048-BC74-6A8DA77BF36C}
+	EndGlobalSection
+EndGlobal
