@@ -1,5 +1,10 @@
-﻿Imports System.IO
+﻿Imports System.CodeDom.Compiler
+Imports System.IO
+Imports System.Reflection
+Imports System.Text
 Imports System.Windows.Forms
+Imports Microsoft.CodeAnalysis
+Imports Microsoft.CodeAnalysis.VisualBasic
 
 Public Class InteractiveReplNode
 
@@ -66,6 +71,71 @@ Public Class InteractiveReplNode
 
     End Property
 
+#Region "EXECUTE"
+    Private Function ExecuteCode(code As String) As String
+        Dim outputBuilder As New StringBuilder()
+
+        Try
+            Dim compiledCode As Assembly = CompileCode(code)
+            Dim method As MethodInfo = compiledCode.EntryPoint
+            Dim result As Object = method.Invoke(Nothing, Nothing)
+
+            outputBuilder.AppendLine("Execution Successful")
+            outputBuilder.AppendLine("Output:")
+            outputBuilder.AppendLine(result.ToString())
+        Catch ex As Exception
+            outputBuilder.AppendLine("Execution Failed")
+            outputBuilder.AppendLine("Error:")
+            outputBuilder.AppendLine(ex.Message)
+        End Try
+
+        Return outputBuilder.ToString()
+    End Function
+    Private Sub BuildTreeView(syntaxNode As SyntaxNode, treeNodes As TreeNodeCollection)
+        Dim newNode As TreeNode = treeNodes.Add(syntaxNode.RawKind().ToString())
+        newNode.Tag = syntaxNode
+
+        For Each childNode As SyntaxNode In syntaxNode.ChildNodes()
+            BuildTreeView(childNode, newNode.Nodes)
+        Next
+    End Sub
+    Private Function CompileCode(code As String) As Assembly
+        Dim provider As New VBCodeProvider()
+        Dim compilerParams As New CompilerParameters()
+        compilerParams.GenerateExecutable = False
+        compilerParams.GenerateInMemory = True
+
+        Dim compiledCode As CompilerResults = provider.CompileAssemblyFromSource(compilerParams, code)
+        Return compiledCode.CompiledAssembly
+    End Function
+    Private Sub EXECUTE(ByRef CODE As String, ByRef View As TreeView, OutputRichTextBox As RichTextBox)
+        Dim output As String = ExecuteCode(CODE)
+        Dim syntaxTree As SyntaxTree = SyntaxFactory.ParseSyntaxTree(CODE)
+        Dim rootNode As SyntaxNode = syntaxTree.GetRoot()
+
+        BuildTreeView(rootNode, View.Nodes)
+        OutputRichTextBox.Text = output
+    End Sub
+#End Region
+    Public Sub ExecuteCell()
+
+    End Sub
+    Public Sub Execute()
+        LoadCompiler()
+        compiler.CompileMEM()
+        RichTextBoxNodeOutput.Clear()
+        RichTextBoxNodeOutput.Visible = True
+        If IsMain = True Then
+
+            For Each item In compiler.GetOutput
+                RichTextBoxNodeOutput.Text += item & vbNewLine
+            Next
+        Else
+            RichTextBoxNodeOutput.Clear()
+            RichTextBoxNodeOutput.Text += "Output displayed in MainCell this cell must be executed from Main Cell and will be treated as a part of the whole code"
+
+        End If
+    End Sub
     Public Class VbCompiler
 
         Private Const Lang As String = "VisualBasic"
@@ -349,25 +419,11 @@ Public Class InteractiveReplNode
     Private Sub LoadCompiler()
         compiler = New VbCompiler(Code)
     End Sub
-    Public Sub Execute()
-        LoadCompiler()
-        compiler.CompileMEM()
-        RichTextBoxNodeOutput.Clear()
-        RichTextBoxNodeOutput.Visible = True
-        If IsMain = True Then
 
-            For Each item In compiler.GetOutput
-                RichTextBoxNodeOutput.Text += item & vbNewLine
-            Next
-        Else
-            RichTextBoxNodeOutput.Clear()
-            RichTextBoxNodeOutput.Text += "Output displayed in MainCell this cell must be executed from Main Cell and will be treated as a part of the whole code"
-        End If
-    End Sub
     Private Sub ButtonAddCell_Click(sender As Object, e As EventArgs) Handles ButtonAddCell.Click
         RaiseEvent AddNewCell(Me, True)
     End Sub
     Private Sub ButtonExecute_Click(sender As Object, e As EventArgs) Handles ButtonExecute.Click
-        Execute()
+        ExecuteCell()
     End Sub
 End Class

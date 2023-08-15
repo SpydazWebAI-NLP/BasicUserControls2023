@@ -53,7 +53,6 @@ Partial Class GPT_Control
         CType(Me.SplitContainer7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer7.Panel1.SuspendLayout()
         Me.SplitContainer7.SuspendLayout()
-        Me.ToolStripStandard.SuspendLayout()
         CType(Me.SplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer6.Panel1.SuspendLayout()
         Me.SplitContainer6.Panel2.SuspendLayout()
@@ -213,7 +212,6 @@ Partial Class GPT_Control
         Me.ToolStripStandard.BackColor = System.Drawing.Color.Gray
         Me.ToolStripStandard.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripStandard.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ToolStripStandard.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripButton, Me.OpenToolStripButton, Me.SaveToolStripButton, Me.PrintToolStripButton, Me.toolStripSeparator, Me.CutToolStripButton, Me.CopyToolStripButton, Me.PasteToolStripButton, Me.toolStripSeparator1, Me.HelpToolStripButton})
         Me.ToolStripStandard.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripStandard.MinimumSize = New System.Drawing.Size(0, 45)
         Me.ToolStripStandard.Name = "ToolStripStandard"
@@ -411,8 +409,6 @@ Partial Class GPT_Control
         Me.SplitContainer7.Panel1.PerformLayout()
         CType(Me.SplitContainer7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer7.ResumeLayout(False)
-        Me.ToolStripStandard.ResumeLayout(False)
-        Me.ToolStripStandard.PerformLayout()
         Me.SplitContainer6.Panel1.ResumeLayout(False)
         Me.SplitContainer6.Panel1.PerformLayout()
         Me.SplitContainer6.Panel2.ResumeLayout(False)

@@ -25,7 +25,6 @@ Partial Class InteractiveReplNode
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InteractiveReplNode))
-        Me.TextBoxNodeCodeInput = New System.Windows.Forms.TextBox()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -51,6 +50,9 @@ Partial Class InteractiveReplNode
         Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.HelpToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.RichTextBoxNodeOutput = New System.Windows.Forms.RichTextBox()
+        Me.SplitContainer8 = New System.Windows.Forms.SplitContainer()
+        Me.TextBoxNodeCodeInput = New System.Windows.Forms.TextBox()
+        Me.ST_TREEVIEW = New System.Windows.Forms.TreeView()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -80,23 +82,11 @@ Partial Class InteractiveReplNode
         Me.SplitContainer7.Panel1.SuspendLayout()
         Me.SplitContainer7.SuspendLayout()
         Me.ToolStripStandard.SuspendLayout()
+        CType(Me.SplitContainer8, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer8.Panel1.SuspendLayout()
+        Me.SplitContainer8.Panel2.SuspendLayout()
+        Me.SplitContainer8.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'TextBoxNodeCodeInput
-        '
-        Me.TextBoxNodeCodeInput.AcceptsReturn = True
-        Me.TextBoxNodeCodeInput.AcceptsTab = True
-        Me.TextBoxNodeCodeInput.AllowDrop = True
-        Me.TextBoxNodeCodeInput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBoxNodeCodeInput.Font = New System.Drawing.Font("Consolas", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxNodeCodeInput.Location = New System.Drawing.Point(0, 0)
-        Me.TextBoxNodeCodeInput.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBoxNodeCodeInput.Multiline = True
-        Me.TextBoxNodeCodeInput.Name = "TextBoxNodeCodeInput"
-        Me.TextBoxNodeCodeInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBoxNodeCodeInput.Size = New System.Drawing.Size(1376, 225)
-        Me.TextBoxNodeCodeInput.TabIndex = 1
-        Me.TextBoxNodeCodeInput.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'SplitContainer1
         '
@@ -127,7 +117,7 @@ Partial Class InteractiveReplNode
         '
         'SplitContainer2.Panel1
         '
-        Me.SplitContainer2.Panel1.Controls.Add(Me.TextBoxNodeCodeInput)
+        Me.SplitContainer2.Panel1.Controls.Add(Me.SplitContainer8)
         '
         'SplitContainer2.Panel2
         '
@@ -412,6 +402,47 @@ Partial Class InteractiveReplNode
         Me.RichTextBoxNodeOutput.Text = ""
         Me.RichTextBoxNodeOutput.Visible = False
         '
+        'SplitContainer8
+        '
+        Me.SplitContainer8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer8.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer8.Name = "SplitContainer8"
+        '
+        'SplitContainer8.Panel1
+        '
+        Me.SplitContainer8.Panel1.Controls.Add(Me.TextBoxNodeCodeInput)
+        '
+        'SplitContainer8.Panel2
+        '
+        Me.SplitContainer8.Panel2.Controls.Add(Me.ST_TREEVIEW)
+        Me.SplitContainer8.Size = New System.Drawing.Size(1376, 225)
+        Me.SplitContainer8.SplitterDistance = 969
+        Me.SplitContainer8.TabIndex = 0
+        '
+        'TextBoxNodeCodeInput
+        '
+        Me.TextBoxNodeCodeInput.AcceptsReturn = True
+        Me.TextBoxNodeCodeInput.AcceptsTab = True
+        Me.TextBoxNodeCodeInput.AllowDrop = True
+        Me.TextBoxNodeCodeInput.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TextBoxNodeCodeInput.Font = New System.Drawing.Font("Consolas", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxNodeCodeInput.Location = New System.Drawing.Point(0, 0)
+        Me.TextBoxNodeCodeInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBoxNodeCodeInput.Multiline = True
+        Me.TextBoxNodeCodeInput.Name = "TextBoxNodeCodeInput"
+        Me.TextBoxNodeCodeInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBoxNodeCodeInput.Size = New System.Drawing.Size(969, 225)
+        Me.TextBoxNodeCodeInput.TabIndex = 2
+        Me.TextBoxNodeCodeInput.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'ST_TREEVIEW
+        '
+        Me.ST_TREEVIEW.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ST_TREEVIEW.Location = New System.Drawing.Point(0, 0)
+        Me.ST_TREEVIEW.Name = "ST_TREEVIEW"
+        Me.ST_TREEVIEW.Size = New System.Drawing.Size(403, 225)
+        Me.ST_TREEVIEW.TabIndex = 0
+        '
         'InteractiveReplNode
         '
         Me.AllowDrop = True
@@ -430,7 +461,6 @@ Partial Class InteractiveReplNode
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.SplitContainer2.Panel1.ResumeLayout(False)
-        Me.SplitContainer2.Panel1.PerformLayout()
         Me.SplitContainer2.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer2.ResumeLayout(False)
@@ -459,11 +489,14 @@ Partial Class InteractiveReplNode
         Me.SplitContainer7.ResumeLayout(False)
         Me.ToolStripStandard.ResumeLayout(False)
         Me.ToolStripStandard.PerformLayout()
+        Me.SplitContainer8.Panel1.ResumeLayout(False)
+        Me.SplitContainer8.Panel1.PerformLayout()
+        Me.SplitContainer8.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer8.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents TextBoxNodeCodeInput As TextBox
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents SplitContainer2 As SplitContainer
     Friend WithEvents SplitContainer3 As SplitContainer
@@ -489,4 +522,7 @@ Partial Class InteractiveReplNode
     Friend WithEvents Button1 As Button
     Friend WithEvents SplitContainer7 As SplitContainer
     Friend WithEvents RadioButtonIsMainCell As RadioButton
+    Friend WithEvents SplitContainer8 As SplitContainer
+    Friend WithEvents TextBoxNodeCodeInput As TextBox
+    Friend WithEvents ST_TREEVIEW As TreeView
 End Class
